@@ -31,7 +31,7 @@ namespace BookManagement
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine("1. 📚 Menu Livro");
         Console.WriteLine("2. 🙋 Menu Usuário");
-        Console.WriteLine("2. 🏦 Menu Empréstimo");
+        Console.WriteLine("3. 🏦 Menu Empréstimo");
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("5. 🔚 Sair");
       }
