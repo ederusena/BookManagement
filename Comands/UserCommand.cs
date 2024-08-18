@@ -66,7 +66,9 @@ namespace BookManagement.Comands
                                 Console.WriteLine($"Id: {item.Id} - Nome: {item.Name} - Email: {item.Email}");
                             }
                         }
-                        Console.ReadLine();
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("↩️ Pressione qualquer tecla para continuar...");
+                        Console.ReadKey();
                         break;
                     case "3":
                         Console.ForegroundColor = ConsoleColor.Cyan;
@@ -82,7 +84,9 @@ namespace BookManagement.Comands
                         {
                             Console.WriteLine($"Id: {userById.Id} - Nome: {userById.Name} - Email: {userById.Email}");
                         }
-                        Console.ReadLine();
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("↩️ Pressione qualquer tecla para continuar...");
+                        Console.ReadKey();
                         break;
                     case "4":
                         Console.ForegroundColor = ConsoleColor.Cyan;
@@ -91,6 +95,9 @@ namespace BookManagement.Comands
                         var idToRemove = int.Parse(Console.ReadLine());
                         _userService.RemoveUser(idToRemove);
                         Console.WriteLine("Usuário removido com sucesso!");
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("↩️ Pressione qualquer tecla para continuar...");
+                        Console.ReadKey();
                         break;
                     case "5":
                         return;

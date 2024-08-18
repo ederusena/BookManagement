@@ -27,3 +27,4 @@ C:\Workspace\MentoriaDotnet\BookManagement\obj\Debug\net8.0\refint\BookManagemen
 C:\Workspace\MentoriaDotnet\BookManagement\obj\Debug\net8.0\BookManagement.pdb
 C:\Workspace\MentoriaDotnet\BookManagement\obj\Debug\net8.0\BookManagement.genruntimeconfig.cache
 C:\Workspace\MentoriaDotnet\BookManagement\obj\Debug\net8.0\ref\BookManagement.dll
+C:\Workspace\MentoriaDotnet\BookManagement\obj\Debug\net8.0\BookManagement.sourcelink.json

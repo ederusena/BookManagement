@@ -9,12 +9,14 @@ namespace BookManagement.Models
     {
         public Book(string title, string author, string iSBN, int publishYear)
         {
+            Id = generateId();
             Title = title;
             Author = author;
             ISBN = iSBN;
             PublishYear = publishYear;
         }
 
+        private static int autoId = 0;
         public int Id { get; private set; }
         public string Title { get; private set; }
         public string Author { get; private set; }
@@ -23,11 +25,15 @@ namespace BookManagement.Models
 
         public void Add(string title, string author, string iSBN, int publishYear)
         {
-            Id = new Random().Next(1, 1000);
             Title = title;
             Author = author;
             ISBN = iSBN;
             PublishYear = publishYear;
+        }
+
+        private static int generateId()
+        {
+            return autoId++;
         }
     }
 }

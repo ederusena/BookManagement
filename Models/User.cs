@@ -9,21 +9,29 @@ namespace BookManagement.Models
     {
         public User(string name, string email)
         {
+            Id = generateId();
             Name = name;
             Email = email;
         }
 
         public User() { }
 
+
+        private static int autoId = 0;
         public int Id { get; private set; }
         public string Name { get; private set; }
         public string Email { get; private set; }
 
         public void Add(string name, string email)
         {
-            Id = new Random().Next(1, 1000);
+
             Name = name;
             Email = email;
+        }
+
+        private static int generateId()
+        {
+            return autoId++;
         }
     }
 }

@@ -74,7 +74,7 @@ namespace BookManagement.Comands
                                 Console.WriteLine($"Id: {l.Id}, Título: {l.Title}, Autor: {l.Author}, ISBN: {l.ISBN}, Ano: {l.PublishYear}");
                             }
                             Console.ForegroundColor = ConsoleColor.Yellow;
-                            Console.WriteLine("Pressione qualquer tecla para continuar...");
+                            Console.WriteLine("↩️ Pressione qualquer tecla para continuar...");
                             Console.ReadKey();
                         }
                         break;
@@ -90,7 +90,7 @@ namespace BookManagement.Comands
                             Console.WriteLine($"Id: {livroConsultado.Id}, Título: {livroConsultado.Title}, Autor: {livroConsultado.Author}, ISBN: {livroConsultado.ISBN}, Ano: {livroConsultado.PublishYear}");
                             Console.ForegroundColor = ConsoleColor.Yellow;
 
-                            Console.WriteLine("Pressione qualquer tecla para continuar...");
+                            Console.WriteLine("↩️ Pressione qualquer tecla para continuar...");
                             Console.ReadKey();
                         }
                         else
@@ -107,7 +107,7 @@ namespace BookManagement.Comands
                         _livroService.RemoveBook(idRemocao);
                         Console.WriteLine("Livro removido com sucesso.");
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("Pressione qualquer tecla para continuar...");
+                        Console.WriteLine("↩️ Pressione qualquer tecla para continuar...");
                         Console.ReadKey();
                         break;
 
