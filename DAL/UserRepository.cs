@@ -21,7 +21,7 @@ namespace BookManagement.DAL
 
         public User GetById(int id)
         {
-            return _users.FirstOrDefault(x => x.Id == id);
+            return _users.FirstOrDefault(x => x.Id == id)!;
         }
 
         public void Remove(int id)

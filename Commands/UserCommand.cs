@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BookManagement.BLL;
+using BookManagement.Generics;
 using BookManagement.Models;
 
-namespace BookManagement.Comands
+namespace BookManagement.Commands
 {
     public class UserCommand
     {
@@ -16,7 +17,7 @@ namespace BookManagement.Comands
             _userService = userService;
         }
 
-        void ExibirMenu()
+        void ShowMenu()
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -28,23 +29,18 @@ namespace BookManagement.Comands
             Console.WriteLine("5. ↩️ Voltar ao menu anterior");
         }
 
-        public void Executar()
+        public void Run()
         {
             while (true)
             {
-                ExibirMenu();
-                var opcao = Console.ReadLine();
+                ShowMenu();
+                var option = Console.ReadLine();
 
-                switch (opcao)
+                switch (option)
                 {
                     case "1":
-                        Console.ForegroundColor = ConsoleColor.Cyan;
-                        Console.Clear();
-                        Console.Write("Nome: ");
-                        var nome = Console.ReadLine();
-                        Console.Clear();
-                        Console.Write("Email: ");
-                        var email = Console.ReadLine();
+                        var nome = CaptureDataUser.GetData("Nome: ", entrada => entrada);
+                        var email = CaptureDataUser.GetData("E-mail: ", entrada => entrada);
 
                         var user = new User(nome, email);
 
@@ -71,10 +67,7 @@ namespace BookManagement.Comands
                         Console.ReadKey();
                         break;
                     case "3":
-                        Console.ForegroundColor = ConsoleColor.Cyan;
-                        Console.Clear();
-                        Console.Write("Id: ");
-                        var id = int.Parse(Console.ReadLine());
+                        var id = CaptureDataUser.GetData("Id: ", entrada => int.Parse(entrada));
                         var userById = _userService.GetUserById(id);
                         if (userById == null)
                         {
@@ -89,11 +82,8 @@ namespace BookManagement.Comands
                         Console.ReadKey();
                         break;
                     case "4":
-                        Console.ForegroundColor = ConsoleColor.Cyan;
-                        Console.Clear();
-                        Console.Write("Id: ");
-                        var idToRemove = int.Parse(Console.ReadLine());
-                        _userService.RemoveUser(idToRemove);
+                        var idRemove = CaptureDataUser.GetData("Id: ", entrada => int.Parse(entrada));
+                        _userService.RemoveUser(idRemove);
                         Console.WriteLine("Usuário removido com sucesso!");
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("↩️ Pressione qualquer tecla para continuar...");

@@ -49,7 +49,10 @@ namespace BookManagement.BLL
                 throw new Exception("Usuário não encontrado");
             }
 
-            userToUpdate.Add(user.Name, user.Email);
+            if (user.Name != null && user.Email != null)
+            {
+                userToUpdate.Add(user.Name, user.Email);
+            }
         }
     }
 }

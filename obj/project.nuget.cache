@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CPLpZLQtoTY=",
+  "dgSpecHash": "YHgqD+gFMiw=",
   "success": true,
-  "projectFilePath": "C:\\Workspace\\MentoriaDotnet\\BookManagement\\BookManagement.csproj",
+  "projectFilePath": "A:\\sources\\BookManagement\\BookManagement.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\eders\\.nuget\\packages\\microsoft.extensions.configuration\\8.0.0\\microsoft.extensions.configuration.8.0.0.nupkg.sha512",
     "C:\\Users\\eders\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0\\microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",

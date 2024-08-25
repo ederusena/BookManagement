@@ -19,8 +19,8 @@ namespace BookManagement.Models
 
         private static int autoId = 0;
         public int Id { get; private set; }
-        public string Name { get; private set; }
-        public string Email { get; private set; }
+        public string? Name { get; private set; }
+        public string? Email { get; private set; }
 
         public void Add(string name, string email)
         {

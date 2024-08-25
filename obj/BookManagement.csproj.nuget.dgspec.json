@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Workspace\\MentoriaDotnet\\BookManagement\\BookManagement.csproj": {}
+    "A:\\sources\\BookManagement\\BookManagement.csproj": {}
   },
   "projects": {
-    "C:\\Workspace\\MentoriaDotnet\\BookManagement\\BookManagement.csproj": {
+    "A:\\sources\\BookManagement\\BookManagement.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Workspace\\MentoriaDotnet\\BookManagement\\BookManagement.csproj",
+        "projectUniqueName": "A:\\sources\\BookManagement\\BookManagement.csproj",
         "projectName": "BookManagement",
-        "projectPath": "C:\\Workspace\\MentoriaDotnet\\BookManagement\\BookManagement.csproj",
+        "projectPath": "A:\\sources\\BookManagement\\BookManagement.csproj",
         "packagesPath": "C:\\Users\\eders\\.nuget\\packages\\",
-        "outputPath": "C:\\Workspace\\MentoriaDotnet\\BookManagement\\obj\\",
+        "outputPath": "A:\\sources\\BookManagement\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\eders\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -79,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

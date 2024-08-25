@@ -2,7 +2,7 @@
 
 
 using BookManagement.BLL;
-using BookManagement.Comands;
+using BookManagement.Commands;
 using BookManagement.DAL;
 using BookManagement.Models;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,16 +18,19 @@ namespace BookManagement
         .AddTransient<BookService>()
         .AddSingleton<IRepository<User>, UserRepository>()
         .AddTransient<UserService>()
+        .AddSingleton<IRepository<Loan>, LoanRepository>()
+        .AddTransient<LoanService>()
         .AddTransient<BookCommand>()
         .AddTransient<UserCommand>()
+        .AddTransient<LoanCommand>()
         .BuildServiceProvider();
 
       var _bookCommand = serviceProvider.GetService<BookCommand>();
       var _userCommand = serviceProvider.GetService<UserCommand>();
+      var _loanCommand = serviceProvider.GetService<LoanCommand>();
 
-      void ExibirMenu()
+      void ShowMenu()
       {
-        Console.Clear();
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine("1. 📚 Menu Livro");
         Console.WriteLine("2. 🙋 Menu Usuário");
@@ -35,24 +38,28 @@ namespace BookManagement
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("5. 🔚 Sair");
       }
-
-      while (true)
+      var continueLoop = true;
+      while (continueLoop)
       {
-        ExibirMenu();
-        var opcao = Console.ReadLine();
+        ShowMenu();
+        var option = Console.ReadLine();
 
-        switch (opcao)
+        switch (option)
         {
           case "1":
-            _bookCommand?.Executar();
+            _bookCommand?.Run();
             break;
           case "2":
-            _userCommand?.Executar();
+            _userCommand?.Run();
             break;
-          case "5":
-            Console.ForegroundColor = ConsoleColor.White;
+          case "3":
+            _loanCommand?.Run();
             return;
-
+          case "5":
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;
+            continueLoop = false;
+            return;
           default:
             Console.WriteLine("Opção inválida.");
             break;

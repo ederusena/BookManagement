@@ -3,20 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BookManagement.BLL;
+using BookManagement.Generics;
 using BookManagement.Models;
 
-namespace BookManagement.Comands
+namespace BookManagement.Commands
 {
     public class BookCommand
     {
-        private readonly BookService _livroService;
+        private readonly BookService _bookService;
 
-        public BookCommand(BookService livroService)
+        public BookCommand(BookService bookService)
         {
-            _livroService = livroService;
+            _bookService = bookService;
         }
 
-        void ExibirMenu()
+        void ShowMenu()
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -27,49 +28,42 @@ namespace BookManagement.Comands
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("5. ↩️ Voltar ao menu anterior");
         }
-        public void Executar()
+        public void Run()
         {
 
 
             while (true)
             {
-                ExibirMenu();
-                var opcao = Console.ReadLine();
+                ShowMenu();
+                var option = Console.ReadLine();
 
-                switch (opcao)
+                switch (option)
                 {
                     case "1":
-                        Console.ForegroundColor = ConsoleColor.Cyan;
-                        Console.Clear();
-                        Console.Write("Título: ");
-                        var titulo = Console.ReadLine();
-                        Console.Clear();
-                        Console.Write("Autor: ");
-                        var autor = Console.ReadLine();
-                        Console.Clear();
-                        Console.Write("ISBN: ");
-                        var isbn = Console.ReadLine();
-                        Console.Clear();
-                        Console.Write("Ano de Publicação: ");
-                        var ano = int.Parse(Console.ReadLine());
+                        var title = CaptureDataUser.GetData("Título: ", entrada => entrada);
+                        var author = CaptureDataUser.GetData("Autor: ", entrada => entrada);
+                        var isbn = CaptureDataUser.GetData("ISBN: ", entrada => entrada);
+                        var ano = CaptureDataUser.GetData("Ano de Publicação: ", entrada => int.Parse(entrada));
 
-                        var livro = new Book(titulo, autor, isbn, ano);
+                        var book = new Book(title, author, isbn, ano);
 
-                        _livroService.AddBook(livro);
+                        _bookService.AddBook(book);
                         Console.WriteLine("Livro cadastrado com sucesso!");
+                        Console.WriteLine("↩️ Pressione qualquer tecla para continuar...");
+                        Console.ReadKey();
                         break;
 
                     case "2":
-                        var livros = _livroService.GetAllBooks();
+                        var books = _bookService.GetAllBooks();
                         Console.Clear();
                         Console.ForegroundColor = ConsoleColor.Cyan;
-                        if (livros.Count == 0)
+                        if (books.Count == 0)
                         {
                             Console.WriteLine("Nenhum livro cadastrado.");
                         }
                         else
                         {
-                            foreach (var l in livros)
+                            foreach (var l in books)
                             {
                                 Console.WriteLine($"Id: {l.Id}, Título: {l.Title}, Autor: {l.Author}, ISBN: {l.ISBN}, Ano: {l.PublishYear}");
                             }
@@ -80,14 +74,12 @@ namespace BookManagement.Comands
                         break;
 
                     case "3":
-                        Console.Clear();
-                        Console.ForegroundColor = ConsoleColor.Cyan;
-                        Console.Write("Digite o Id do livro: ");
-                        var idConsulta = int.Parse(Console.ReadLine());
-                        var livroConsultado = _livroService.GetBookById(idConsulta);
-                        if (livroConsultado != null)
+                        var findId = CaptureDataUser.GetData("ID do Livro: ", entrada => int.Parse(entrada));
+
+                        var bookFound = _bookService.GetBookById(findId);
+                        if (bookFound != null)
                         {
-                            Console.WriteLine($"Id: {livroConsultado.Id}, Título: {livroConsultado.Title}, Autor: {livroConsultado.Author}, ISBN: {livroConsultado.ISBN}, Ano: {livroConsultado.PublishYear}");
+                            Console.WriteLine($"Id: {bookFound.Id}, Título: {bookFound.Title}, Autor: {bookFound.Author}, ISBN: {bookFound.ISBN}, Ano: {bookFound.PublishYear}");
                             Console.ForegroundColor = ConsoleColor.Yellow;
 
                             Console.WriteLine("↩️ Pressione qualquer tecla para continuar...");
@@ -100,11 +92,8 @@ namespace BookManagement.Comands
                         break;
 
                     case "4":
-                        Console.Clear();
-                        Console.ForegroundColor = ConsoleColor.Cyan;
-                        Console.Write("Digite o Id do livro a ser removido: ");
-                        var idRemocao = int.Parse(Console.ReadLine());
-                        _livroService.RemoveBook(idRemocao);
+                        var removeIdFind = CaptureDataUser.GetData("Digite o Id do livro a ser removido: ", entrada => int.Parse(entrada));
+                        _bookService.RemoveBook(removeIdFind);
                         Console.WriteLine("Livro removido com sucesso.");
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("↩️ Pressione qualquer tecla para continuar...");

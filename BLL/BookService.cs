@@ -9,11 +9,11 @@ namespace BookManagement.BLL
 {
     public class BookService
     {
-        private readonly IRepository<Book> _livroRepository;
+        private readonly IRepository<Book> _bookRepository;
 
-        public BookService(IRepository<Book> livroRepository)
+        public BookService(IRepository<Book> bookRepository)
         {
-            _livroRepository = livroRepository;
+            _bookRepository = bookRepository;
         }
 
         public void AddBook(Book book)
@@ -23,27 +23,27 @@ namespace BookManagement.BLL
                 throw new Exception("Todos os campos são obrigatórios");
             }
 
-            _livroRepository.Add(book);
+            _bookRepository.Add(book);
         }
 
         public void RemoveBook(int id)
         {
-            _livroRepository.Remove(id);
+            _bookRepository.Remove(id);
         }
 
         public List<Book> GetAllBooks()
         {
-            return _livroRepository.GetAll();
+            return _bookRepository.GetAll();
         }
 
         public Book GetBookById(int id)
         {
-            return _livroRepository.GetById(id);
+            return _bookRepository.GetById(id);
         }
 
         public void UpdateBook(int id, Book book)
         {
-            var bookToUpdate = _livroRepository.GetById(id);
+            var bookToUpdate = _bookRepository.GetById(id);
             if (bookToUpdate == null)
             {
                 throw new Exception("Livro não encontrado");
